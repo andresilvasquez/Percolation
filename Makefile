@@ -44,7 +44,7 @@ ejecutar_%: $(OPT_DIR)/percolacion_%.x resultados
 
 ejecutar: $(foreach opt,$(OPTIMIZERS),ejecutar_$(opt))
 
-Probabilidadclúster.pdf Tamanoclúster.pdf Tiempos.pdf:
+Probabilidadcluster.pdf Tamanocluster.pdf Tiempos.pdf:
 	@echo "Hacer make ejecutar antes"
 	@python3 probperc.py "$(L_valores)" "$(p_valores)" "$(OPTIMIZERS)"
 
@@ -56,12 +56,12 @@ ifndef ARGS
 	@exit 1
 endif
 	@./$(BIN_DIR)/percolacion.x $(ARGS)
-	@python3 clústers.py
+	@python3 clusters.py
 	@touch malla.pdf
 
 malla.pdf: $(BIN_DIR)/percolacion.x
 	@./$< $(ARGS)
-	python3 clústers.py
+	python3 clusters.py
 
 #Test 
 $(BIN_DIR)/functions.o: functions.cpp | $(BIN_DIR)
@@ -142,7 +142,7 @@ endif
 	@echo "Wrote profile report made with gprof to profiling/gprof.txt"
 	@echo "Wrote profile report made with perf to profiling/perf.txt"
 
-reporte.pdf: Probabilidadclúster.pdf Tamanoclúster.pdf Tiempos.pdf malla.pdf
+reporte.pdf: Probabilidadcluster.pdf Tamanocluster.pdf Tiempos.pdf malla.pdf
 	latexmk -pdf reporte.tex
 	rm -f *reporteNotes.bib *.aux *.bbl *.blg *.fdb* *.fls *.log *.synctex.gz *.out 
 
@@ -150,5 +150,5 @@ report : reporte.pdf
 
 clean:      #el @find ... evita borrar el profiling-report.txt, pero borra el resto de .txtc
 	@find . -maxdepth 1 -type f -name '*.txt' ! -name 'profiling-report.txt' -delete
-	rm -f *.x *.gcda *.gcno *.pdf *.gcov *.html *.css gmon.out perf.data* *.svg *.out *.o
+	rm -f *.x *.gcda *.gcno *.pdf *.gcov *.html *.css gmon.out perf.data* *.svg *.out *.o *.fdb* *.blg *.log *.bbl *.aux *.synctex*
 	rm -rf $(BIN_DIR) resultados profiling latex_output

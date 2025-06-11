@@ -72,7 +72,7 @@ def main():
     ax1.legend(fontsize=m)
     ax1.grid(True)
     fig1.tight_layout()
-    fig1.savefig("Probabilidadclúster.pdf")
+    fig1.savefig("Probabilidadcluster.pdf")
 
     ax2.set_xlabel(r"Probabilidad de ocupacion $p$", fontsize=n)
     ax2.set_ylabel(r"Tamaño promedio clúster percolante más grande", fontsize=n)

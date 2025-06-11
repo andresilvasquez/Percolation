@@ -212,15 +212,15 @@ A continuación se describe la funcionalidad de cada uno de estos comandos:
 
     \item \texttt{make simul ARGS}: compila y ejecuta una simulación individual con los valores de \( L \), \( p \) y semilla aleatoria especificados. Posteriormente, genera una visualización del clúster percolante al pasar \texttt{bool\_grafica = 1}.
     
-    \item \texttt{make test}: ejecuta pruebas unitarias utilizando la librería Catch2 sobre cuatro casos base: una malla completamente vacía (\( p = 0 \)), una malla completamente ocupada (\( p = 1 \)), una malla con una línea horizontal de unos (para verificar percolación horizontal) y una con una línea vertical (para verificar percolación vertical). Estas pruebas comprueban la detección correcta de clústeres percolantes y el cálculo de sus tamaños.
+    \item \texttt{make test}: ejecuta pruebas unitarias utilizando la librería Catch2\cite{catch2} sobre cuatro casos base: una malla completamente vacía (\( p = 0 \)), una malla completamente ocupada (\( p = 1 \)), una malla con una línea horizontal de unos (para verificar percolación horizontal) y una con una línea vertical (para verificar percolación vertical). Estas pruebas comprueban la detección correcta de clústeres percolantes y el cálculo de sus tamaños.
     
-    \item \texttt{make debug}: compila el programa con banderas de depuración y lo ejecuta bajo GDB para facilitar el análisis detallado de errores.
+    \item \texttt{make debug}: compila el programa con banderas de depuración y lo ejecuta bajo GDB\cite{GDB} para facilitar el análisis detallado de errores.
     
-    \item \texttt{make valgrind ARGS}: compila el programa con banderas de depuración y ejecuta Valgrind para detectar pérdidas de memoria o accesos inválidos en un caso de prueba.
+    \item \texttt{make valgrind ARGS}: compila el programa con banderas de depuración y ejecuta Valgrind\cite{Valgrind} para detectar pérdidas de memoria o accesos inválidos en un caso de prueba.
     
-    \item \texttt{make profile ARGS}: genera informes de \textit{flat profiling} usando la herramienta \texttt{perf} y \texttt{gprof}, tanto para la versión optimizada como para una versión previa no optimizada del código. Se le pueden pasar los argumentos para el caso de probabilidad crítica (\( L = 128 \), \( p = 0.59271 \)), sin embargo, el \textit{profiling} es más provechoso para tamaños de malla más grandes. Esta comparación se analiza en detalle en la sección de Dificultades y optimizaciones.
+    \item \texttt{make profile ARGS}: genera informes de \textit{flat profiling} usando la herramienta \texttt{perf}\cite{perf} y \texttt{gprof}\cite{gprof}, tanto para la versión optimizada como para una versión previa no optimizada del código. Se le pueden pasar los argumentos para el caso de probabilidad crítica (\( L = 128 \), \( p = 0.59271 \)), sin embargo, el \textit{profiling} es más provechoso para tamaños de malla más grandes. Esta comparación se analiza en detalle en la sección de Dificultades y optimizaciones.
     
-    \item \texttt{make coverage}: ejecuta los casos de prueba y genera un reporte en formato HTML que muestra la cobertura del código utilizando \texttt{gcovr}.
+    \item \texttt{make coverage}: ejecuta los casos de prueba y genera un reporte en formato HTML que muestra la cobertura del código utilizando \texttt{gcovr}\cite{gcovr}.
     
     \item \texttt{make clean}: elimina archivos binarios, intermedios y temporales, incluyendo ejecutables, archivos \texttt{.gcda}, \texttt{.gcno}, \texttt{.txt}, \texttt{.pdf} y carpetas como \texttt{resultados} o \texttt{coverage}.
 
@@ -310,7 +310,14 @@ La comparación entre diferentes niveles de optimización evidencia que \texttt{
 Por otro lado, el uso de herramientas como \textit{Makefile}, \textit{Valgrind}, \textit{gprof}, \textit{perf} y \textit{gcovr} permitieron un desarrollo reproducible, depurable y evaluable del trabajo.
 \vspace{0.2 cm}
 
+\bibliography{report}
+
+
 \section{Anexos}
+
+\subsection{Repositorio GitHub}
+
+En el siguiente repositorio de GitHub se encuentran los códigos empleados en C++, Python, el \textit{Makefile}, los archivos \texttt{.pdf} donde se encuentran tanto las figuras como este reporte: \url{https://github.com/JuanSeguraUNAL/Percolacion-malla-bidimensional}.
 
 \subsection{Herramienta trabajo grupal: Todoist}
 
@@ -323,7 +330,6 @@ Para la coordinación del trabajo y la asignación de tareas y pendientes se tra
     \label{fig: todoist}
 \end{figure}
 
-\bibliography{report}
 
 \end{document}
 %
