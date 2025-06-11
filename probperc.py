@@ -28,7 +28,7 @@ def main():
     colors = sns.color_palette("colorblind", n_colors=len(L))
 
     # Crear los objetos de figuras
-    fig1, ax1 = plt.subplots(figsize=(8,6))    # Figura para la probabilidad de clúster percolante
+    fig1, ax1 = plt.subplots(figsize=(8,6))    # Figura para la probabilidad de cluster percolante
     fig2, ax2 = plt.subplots(figsize=(8,6))    # Figura para Tamaño maximo promedio
     fig3, ax3 = plt.subplots(figsize=(8,6))    # Figura para tiempos computacionales
 
@@ -68,18 +68,18 @@ def main():
     n = 15 # fontsize labels de los ejes
     m = 12 # fontsize del legend
     ax1.set_xlabel(r"Probabilidad de ocupacion $p$", fontsize=n)
-    ax1.set_ylabel(r"Probabilidad de clúster percolante", fontsize=n)
+    ax1.set_ylabel(r"Probabilidad de cluster percolante", fontsize=n)
     ax1.legend(fontsize=m)
     ax1.grid(True)
     fig1.tight_layout()
     fig1.savefig("Probabilidadcluster.pdf")
 
     ax2.set_xlabel(r"Probabilidad de ocupacion $p$", fontsize=n)
-    ax2.set_ylabel(r"Tamaño promedio clúster percolante más grande", fontsize=n)
+    ax2.set_ylabel(r"Tamaño promedio cluster percolante más grande", fontsize=n)
     ax2.legend(fontsize=m)
     ax2.grid(True)
     fig2.tight_layout()
-    fig2.savefig("Tamanoclúster.pdf")
+    fig2.savefig("Tamanocluster.pdf")
 
     ax3.set_xlabel(r"Tamaño del lado de la malla", fontsize=n)
     ax3.set_ylabel(r"Tiempo comutacional [s]", fontsize=n)

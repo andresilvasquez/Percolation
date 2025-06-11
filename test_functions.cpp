@@ -12,7 +12,7 @@ TEST_CASE("Malla de solo ceros no percola") {
     std::vector<int> percolantes;
     int tamano_max = 0;
 
-    bool resultado = hay_clúster_percolante(malla, L, tamano_max, etiquetas, percolantes);
+    bool resultado = hay_cluster_percolante(malla, L, tamano_max, etiquetas, percolantes);
     REQUIRE_FALSE(resultado);
     REQUIRE(tamano_max == 0);
     REQUIRE(percolantes.empty());
@@ -28,7 +28,7 @@ TEST_CASE("Malla de solo unos siempre percola") {
     std::vector<int> percolantes;
     int tamano_max = 0;
 
-    bool resultado = hay_clúster_percolante(malla, L, tamano_max, etiquetas, percolantes);
+    bool resultado = hay_cluster_percolante(malla, L, tamano_max, etiquetas, percolantes);
     REQUIRE(resultado);
     REQUIRE(tamano_max == L * L);
     REQUIRE_FALSE(percolantes.empty());
@@ -48,7 +48,7 @@ TEST_CASE("Malla con línea horizontal de unos", "[horizontal]") {
     std::vector<int> percolantes;
     int tamano_max = 0;
 
-    bool hay = hay_clúster_percolante(malla, L, tamano_max, etiquetas, percolantes);
+    bool hay = hay_cluster_percolante(malla, L, tamano_max, etiquetas, percolantes);
     
     // debería haber percolación horizontal
     REQUIRE(hay);
@@ -68,7 +68,7 @@ TEST_CASE("Malla con línea vertical de unos", "[vertical]") {
     std::vector<int> percolantes;
     int tamano_max = 0;
 
-    bool hay = hay_clúster_percolante(malla, L, tamano_max, etiquetas, percolantes);
+    bool hay = hay_cluster_percolante(malla, L, tamano_max, etiquetas, percolantes);
     
     // Sí debería haber percolación vertical
     REQUIRE(hay);

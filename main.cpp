@@ -10,11 +10,11 @@ int main(int argc, char **argv){
 
     std::vector<bool> malla = generar_malla_1D(L, p, seed);
 
-    std::vector<int> etiquetas(L * L, 0);  // Vector correspondiente a la malla 1D con numeros que etiqueten los clústers (0 es no revisado)
-    std::vector<int> percolantes;          // Vector para almacenar las etiquetas de los clústers percolantes
+    std::vector<int> etiquetas(L * L, 0);  // Vector correspondiente a la malla 1D con numeros que etiqueten los clusters (0 es no revisado)
+    std::vector<int> percolantes;          // Vector para almacenar las etiquetas de los clusters percolantes
 
     int tamano_max;
-    bool percola = hay_clúster_percolante(malla, L, tamano_max, etiquetas, percolantes);
+    bool percola = hay_cluster_percolante(malla, L, tamano_max, etiquetas, percolantes);
 
     auto wend{std::chrono::steady_clock::now()};
     std::clock_t cend = std::clock();
@@ -26,7 +26,7 @@ int main(int argc, char **argv){
     std::cout << percola << "\t" << tamano_max << "\t" << wduration << "\t" << cduration << "\n";
 
     if(imprimir){
-        imprimir_clústers(etiquetas, malla, percolantes, L);
+        imprimir_clusters(etiquetas, malla, percolantes, L);
     }
     
     return 0;

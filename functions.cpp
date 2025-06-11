@@ -30,7 +30,7 @@ bool es_percolante(const std::vector<int>& percolantes , int etiqueta){
     return std::find(percolantes.begin(), percolantes.end(), etiqueta) != percolantes.end(); // true si la etiqueta se encuentra en el vector de percolantes
 }
 
-// Funciona para detectar los clústers y etiquetarlos y determinar sus tamanos
+// Funciona para detectar los clusters y etiquetarlos y determinar sus tamanos
 static int dfs(int id, int L, int etiqueta, 
     const std::vector<bool>& malla, 
     std::vector<int>& etiquetas, bool& toca_arriba, 
@@ -78,22 +78,22 @@ static int dfs(int id, int L, int etiqueta,
     return tamano;
 }
 
-bool hay_clúster_percolante(const std::vector<bool>& malla, int L, int& tamano_max, std::vector<int>& etiquetas, std::vector<int>& percolantes){
+bool hay_cluster_percolante(const std::vector<bool>& malla, int L, int& tamano_max, std::vector<int>& etiquetas, std::vector<int>& percolantes){
     int N = L * L; 
-    int etiqueta = 2;                  // Inicializar la etiqueta para el primer clúster
+    int etiqueta = 2;                  // Inicializar la etiqueta para el primer cluster
     tamano_max = 0;   
-    bool percola = false;              // Variable boolena para registrar si el clúster percola o no
+    bool percola = false;              // Variable boolena para registrar si el cluster percola o no
 
     // Iterar sobre los elementos de la primera fila
     for(int id = 0; id < L; ++id){
-        if(malla[id] && etiquetas[id] == 0){  // Revisar si estan ocupados y si no pertenecen a algun clúster
+        if(malla[id] && etiquetas[id] == 0){  // Revisar si estan ocupados y si no pertenecen a algun cluster
             bool toca_arriba = false, toca_abajo = false;
             bool toca_izquierda = false, toca_derecha = false;
 
-            // Detectar el clúster al que pertenece (todos sus elementos) y el tamano de este
+            // Detectar el cluster al que pertenece (todos sus elementos) y el tamano de este
             int tamano = dfs(id, L, etiqueta, malla, etiquetas, toca_arriba, toca_abajo, toca_izquierda, toca_derecha);
 
-            // Determinar si el clúster es percolante y de serlo revisar si su tamano es maximo a los clústers precios
+            // Determinar si el cluster es percolante y de serlo revisar si su tamano es maximo a los clusters precios
             if((toca_arriba && toca_abajo) || (toca_izquierda && toca_derecha)){
                 percola = true;
                 tamano_max = std::max(tamano_max, tamano);
@@ -105,14 +105,14 @@ bool hay_clúster_percolante(const std::vector<bool>& malla, int L, int& tamano_
 
     // Iterar sobre los elementos de la primera columna
     for(int id = 0; id < N; id += L){
-        if(malla[id] && etiquetas[id] == 0){  // Revisar si estan ocupados y si no pertenecen a algun clúster
+        if(malla[id] && etiquetas[id] == 0){  // Revisar si estan ocupados y si no pertenecen a algun cluster
             bool toca_arriba = false, toca_abajo = false;
             bool toca_izquierda = false, toca_derecha = false;
 
-            // Detectar el clúster al que pertenece (todos sus elementos) y el tamano de este
+            // Detectar el cluster al que pertenece (todos sus elementos) y el tamano de este
             int tamano = dfs(id, L, etiqueta, malla, etiquetas, toca_arriba, toca_abajo, toca_izquierda, toca_derecha);
 
-            // Determinar si el clúster es percolante y de serlo revisar si su tamano es maximo a los clústers previos
+            // Determinar si el cluster es percolante y de serlo revisar si su tamano es maximo a los clusters previos
             if((toca_arriba && toca_abajo) || (toca_izquierda && toca_derecha)){
                 percola = true;
                 tamano_max = std::max(tamano_max, tamano);
@@ -124,8 +124,8 @@ bool hay_clúster_percolante(const std::vector<bool>& malla, int L, int& tamano_
     return percola;
 }
 
-// Solo colorea los clústers percolantes, los otros clústers los etiqueta como 1 (blanco) y los no ocupados con 0 (negro)
-void imprimir_clústers(const std::vector<int>& etiquetas, const std::vector<bool>& malla, const std::vector<int>& percolantes, int L){
+// Solo colorea los clusters percolantes, los otros clusters los etiqueta como 1 (blanco) y los no ocupados con 0 (negro)
+void imprimir_clusters(const std::vector<int>& etiquetas, const std::vector<bool>& malla, const std::vector<int>& percolantes, int L){
     int id;
     std::ofstream malla_etiquetada("malla_etiquetada.txt");  // Crear el objeto sobre el que se realizaran modificaciones para el .txt
     for(int i = 0; i < L; ++i){
@@ -135,11 +135,11 @@ void imprimir_clústers(const std::vector<int>& etiquetas, const std::vector<boo
             if(!malla[id]){
                 malla_etiquetada << 0 << "\t";
             }
-            // Si el elemento de la malla pertenece a un clúster percolante, llenar con la etiqueta del clúster correspondiente
+            // Si el elemento de la malla pertenece a un cluster percolante, llenar con la etiqueta del cluster correspondiente
             else if(etiquetas[id] != 0 && es_percolante(percolantes, etiquetas[id])){
                 malla_etiquetada << etiquetas[id] << "\t";
             }
-            // Si el elemento de la malla pertenece a un clúster pero no es percolante, colocar 1 en la malla etiquetada
+            // Si el elemento de la malla pertenece a un cluster pero no es percolante, colocar 1 en la malla etiquetada
             else{
                 malla_etiquetada << 1 << "\t";
             }

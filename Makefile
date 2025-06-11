@@ -48,7 +48,7 @@ Probabilidadcluster.pdf Tamanocluster.pdf Tiempos.pdf:
 	@echo "Hacer make ejecutar antes"
 	@python3 probperc.py "$(L_valores)" "$(p_valores)" "$(OPTIMIZERS)"
 
-analisis : Probabilidadclúster.pdf Tamanoclúster.pdf Tiempos.pdf
+analisis : Probabilidadcluster.pdf Tamanocluster.pdf Tiempos.pdf
 
 simul: 
 ifndef ARGS
