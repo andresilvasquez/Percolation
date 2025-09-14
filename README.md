@@ -13,7 +13,7 @@ Percolation theory studies how connectivity emerges in random systems. In this p
 - White: occupied but non-percolating sites  
 - Blue: percolating cluster  
 
-![Percolation lattice example](malla.pdf)  
+![Percolation lattice example](Figures/malla.png)  
 
 ---
 
@@ -24,14 +24,14 @@ The file `Probabilidadcluster.pdf` shows the probability that a cluster percolat
 - As the lattice size increases, the data converges towards the critical probability for 2D site percolation (*p_c ≈ 0.5927*).  
 - This illustrates the phase transition between non-percolating and percolating regimes.  
 
-![Percolation probability](Probabilidadcluster.pdf)  
+![Percolation probability](Figures/Probabilidadcluster.png)  
 
 ### Largest Cluster Size  
 The file `Tamanocluster.pdf` presents the mean relative size (normalized by grid size) of the largest percolating cluster as a function of lattice size and occupation probability *p*.  
 - Near *p_c*, the largest cluster grows rapidly and dominates the system.  
 - Results match theoretical expectations of scaling behaviour in percolation.  
 
-![Largest cluster size](Tamanocluster.pdf)  
+![Largest cluster size](Figures/Tamanocluster.png)  
 
 ---
 
